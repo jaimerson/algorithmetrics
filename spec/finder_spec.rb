@@ -11,6 +11,10 @@ RSpec.describe Finder do
       expect(search.(2)).to eq(1)
       expect(search.(5)).to eq(3)
     end
+
+    it 'returns nil if cannot find value' do
+      expect(search.(666)).to be_nil
+    end
   end
 
   describe 'recursive binary search' do
@@ -27,6 +31,12 @@ RSpec.describe Finder do
 
   describe 'iterative search' do
     let(:search_method) { :iterative_search }
+
+    it_behaves_like 'a search algorithm'
+  end
+
+  describe 'recursive search' do
+    let(:search_method) { :recursive_search }
 
     it_behaves_like 'a search algorithm'
   end

@@ -38,9 +38,16 @@ class Finder
     nil
   end
 
+  def recursive_search(value, index=0)
+    return if index > length - 1
+
+    return index if collection[index] == value
+    recursive_search(value, index + 1)
+  end
+
   private
 
   def length
-    collection.size
+    @length ||= collection.size
   end
 end
